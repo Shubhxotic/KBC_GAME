@@ -1,0 +1,386 @@
+body {
+    background-color: #360f50;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  
+  .kbc-logo {
+    margin-top: 2rem;
+  }
+  
+  .kbc-logo img {
+    width: 600px; /* Increased logo size */
+    height: auto;
+  }
+
+  
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+  .lifelines {
+    display: flex;
+    justify-content: center; /* Center align the lifelines */
+    width: auto; /* Change width to auto to reduce white space */
+    margin: 1rem;
+    margin-top: -1rem;
+}
+
+.lifeline {
+    width: 80px; /* Diameter of the circle */
+    height: 80px; /* Diameter of the circle */
+    border: 2px solid #ffcc00; /* Border color */
+    border-radius: 50%; /* Make it a circle */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    background-color: #4f286b; /* Background color */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth background change */
+    margin: 5px;
+    position: relative;
+}
+
+.lifeline-text {
+    font-size: 0.8rem; /* Adjust this size as needed */
+    color: #ffcc00; /* Text color */
+    margin-top: 5px; /* Space between image and text */
+    text-align: center; /* Center text under the image */
+}
+
+.lifeline img {
+    width: 40px; /* Adjust image size */
+    height: 40px; /* Adjust image size */
+}
+
+.lifeline:hover {
+    background-color: #3b0064; /* Change background on hover */
+}
+  
+  .lifeline-btn {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .lifeline-btn:hover {
+    background-color: #ffc107;
+  }
+  
+  /* Lifeline buttons with cross */
+.lifeline.crossed::after {
+  content: "X"; /* or use an image instead */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: red; /* Or you can use an image for a cross */
+  background: rgba(255, 255, 255, 0.6); /* Optional semi-transparent overlay */
+  z-index: 1;
+  pointer-events: none; /* Make sure the cross doesn't interfere with clicks */
+  border-radius: 50%;
+}
+
+
+  .money-ladder {
+    position: absolute;
+    top: 0%;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .money-ladder ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .money-ladder .step {
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    background-color: #4f286b;
+    margin: 0.25rem 0;
+    border: 2px solid #ffcc00;
+    text-align: left; /* Align text to the left */
+    width: 200px;
+    display: flex; /* Use flexbox to align items in the same line */
+    justify-content: space-between; /* Space between the number and prize */
+    align-items: center; /* Center align vertically */
+}
+
+.money-ladder .step i {
+    margin-left: 5px; /* Adjust spacing between number and icon */
+    color: #ffcc00; /* Match icon color with prize color */
+}
+
+.money-ladder .marginprize {
+    margin-left: auto; /* Pushes the margin prize to the right */
+}
+  
+  .money-ladder .highlight {
+    border: 2px solid #ffc107;
+    background-color: #ffcc00;
+    color: #4f286b;
+  }
+
+  .highlight {
+    background-color: #ffcc00; /* Yellow background */
+    color: #4f286b; /* Change text color for contrast */
+    border: 2px solid #ffc107; /* Optional: Make the border a bit darker for emphasis */
+}
+  
+  .qa-container {
+    position: relative; /* Allow absolute positioning for children */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1500px;
+    margin: 1rem 0; /* Margin between question and answers */
+}
+
+.timer {
+    position: absolute;
+    top: -50px; /* Position it above the question box */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Center it with transform */
+    background-color: #4f286b; /* Background color matching the answer boxes */
+    color: #ffcc00; /* Yellow text */
+    padding: 0px; /* Padding for a better appearance */
+    font-size: 1.5rem; /* Adjust font size */
+    border: 5px solid #ffcc00; /* Border similar to answer boxes */
+    border-radius: 60px 60px 0 0; /* Create a smooth semicircular shape */
+    width: 120px; /* Width of the timer */
+    height: 60px; /* Height of the timer */
+    overflow: hidden; /* Hide any overflow */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center align vertically */
+    justify-content: center; /* Center align horizontally */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+}
+
+.question-box {
+    background-color: #4f286b;
+    padding: 1rem; /* Adjusted padding */
+    width: 90%;
+    color: #ffcc00;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 2px solid #ffcc00;
+    border-radius: 60px; /* Set a border-radius for semicircular edges */
+    margin-bottom: 20px;
+    position: relative; /* Ensure any absolute positioned children are relative to this */
+}
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+    width: 92%;
+  }
+  
+  .answer-row {
+    display: flex; /* For two options in a row */
+    justify-content: space-between;
+    margin: 0.2rem 0; /* Reduced gap between answer rows */
+  }
+  
+  .answer-box {
+    background-color: #4f286b;
+    color: #ffcc00;
+    padding: 1rem;
+    flex: 1; /* Make each box take equal space */
+    text-align: center;
+    font-size: 1.2rem;
+    border: 2px solid #ffcc00;
+    border-radius: 60px; /* Set a border-radius for semicircular edges */
+    cursor: pointer;
+    margin: 0 0.5rem; /* Margin between answer boxes */
+  }
+  
+  .answer-box:hover {
+    background-color: #3b0064;
+  }
+  
+  .logo {
+    width: 500px;  /* Increase from original size */
+    height: auto;  /* Maintain aspect ratio */
+    display: block; /* Center the logo */
+    margin: 0 auto; /* Center alignment */
+  }
+
+
+
+  @keyframes fireworks {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes explosion {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.7);
+        opacity: 0.7;
+    }
+    75% {
+        transform: scale(1.2);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.firework {
+    position: absolute;
+    width: 100px; /* Set size for the firework */
+    height: 100px;
+    background-image: url('path/to/your/fireworks.gif'); /* Use your fireworks GIF here */
+    background-size: cover; /* Ensure the GIF covers the element */
+    pointer-events: none; /* Prevent interaction */
+    animation: explosion 1s forwards; /* Animation for fireworks */
+}
+
+#money-ladder {
+    list-style-type: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+#money-ladder li {
+    position: relative;
+    padding: 10px 0;
+}
+
+#pointer {
+    position: absolute;
+    left: -20px; /* Adjust based on your design */
+    transition: top 0.3s ease;
+}
+
+#winModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 50%; /* Center horizontally */
+  top: 50%; /* Center vertically */
+  transform: translate(-50%, -50%); /* Offset to center */
+  width: 50%; /* Width of the modal */
+  height: 40%; /* Height of the modal */
+  background-color: #4f286b; /* Theme background color (adjust as needed) */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  padding: 10px; /* Inner padding */
+  display: flex; /* Use flexbox for content alignment */
+  flex-direction: column; /* Arrange content vertically */
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  text-align: center;
+  margin: 0;
+}
+
+#winModalContent
+{
+  background-color: #4f286b; /* Theme background color (adjust as needed) */
+  margin-top: 0px;
+  border: 0px;
+}
+
+
+#winModalContent {
+    font-family: 'Roboto', sans-serif; /* Apply the chosen font */
+    font-size: 24px; /* Increase font size for visibility */
+    color: #fff; /* Text color for visibility */
+    text-align: center; /* Center text */
+    align-self: center;
+}
+
+
+#closeWinModal {
+  
+  padding: 10px 20px; /* Button padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners for button */
+  background-color: #fff; /* Button background color */
+  color: #4f286b; /* Text color matching theme */
+  cursor: pointer; /* Change cursor on hover */
+  font-family: 'Roboto', sans-serif; /* Same font for button */
+  font-weight: 700; /* Bold text */
+}
+
+/* Button hover effect */
+#closeWinModal:hover {
+  background-color: #57386d; /* Slightly change background on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+.answer-green {
+  background-color: #4CAF50; /* Green color */
+  color: white;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaun Banega Crorepati</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet"> <!-- Add this line -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <div class="game-container">
+    <!-- Logo -->
+    <div class="kbc-logo" id="kbc-logo">
+      <img src="assets/kbc-logo.png" alt="Kaun Banega Crorepati Logo" class="logo">
+    </div>
+
+    <!-- Ask Modal -->
+<div id="askModal" class="modal">
+  <div class="modal-content">
+      <span class="close" id="closeAskModal">&times;</span>
+      <p>Expert says: <span id="expertAnswer"></span></p>
+  </div>
+</div>
+
+<!-- Audience Poll Modal -->
+<div id="audienceModal" class="modal">
+  <div class="modal-content" id="winModalContent">
+      <span class="close" id="closeAudienceModal">&times;</span>
+      <p>Audience Poll Results:</p>
+      <ul id="audiencePollResults"></ul>
+  </div>
+</div>
+
+<!-- Modal HTML -->
+<div id="winModal" class="modal">
+  <div class="modal-content" id="winModalContent">
+    <img src="assets/amitabh_blue.png" width="15%">
+    <p id="winMessage">You've won X rupees!</p>
+    <span id="closeWinModal" class="close">Next</span>
+  </div>
+</div>
+
+<audio id="gameStartSound" src="assets/kbc_intro_audio.mp3"></audio>
+
+    <!-- Lifelines -->
+    <div class="lifelines">
+      <div class="lifeline" id="lifeline-50-50">
+          <img src="assets/50-50.png" alt="50:50" />
+      </div>
+      <div class="lifeline" id="lifeline-flip">
+          <img src="assets/flip.png" alt="Flip Question" />
+      </div>
+      <div class="lifeline" id="lifeline-ask">
+          <img src="assets/ask.png" alt="Ask the Expert" />
+      </div>
+      <div class="lifeline" id="lifeline-audience">
+          <img src="assets/audience.png" alt="Ask Audience" />
+      </div>
+  </div>
+  
+
+
+    <!-- Money Ladder -->
+    <div class="money-ladder">
+      <ul id="money-ladder">
+        <li id="prize-15" class="step" data-value="70000000">15. <i aria-hidden="true"></i><span class="marginprize">₹ 7 Crore</span></li>
+        <li id="prize-14" class="step" data-value="10000000">14. <i class="fa fa-check-circle"></i><span class="marginprize">₹ 1 Crore</span></li>
+        <li id="prize-13" class="step" data-value="5000000">13. <i aria-hidden="true"></i><span class="marginprize">₹ 50 Lakh</span></li>
+        <li id="prize-12" class="step" data-value="2500000">12. <i aria-hidden="true"></i><span class="marginprize">₹ 25 Lakh</span></li>
+        <li id="prize-11" class="step" data-value="1250000">11. <i aria-hidden="true"></i><span class="marginprize">₹ 12.5 Lakh</span></li>
+        <li id="prize-10" class="step" data-value="640000">10. <i class="fa fa-check-circle"></i><span class="marginprize">₹ 6,40,00</span></li>
+        <li id="prize-9" class="step" data-value="320000">9. <i aria-hidden="true"></i><span class="marginprize">₹ 3,20,000</span></li>
+        <li id="prize-8" class="step" data-value="160000">8. <i aria-hidden="true"></i><span class="marginprize">₹ 1,60,000</span></li>
+        <li id="prize-7" class="step" data-value="80000">7. <i aria-hidden="true"></i><span class="marginprize">₹ 80,000</span></li>
+        <li id="prize-6" class="step" data-value="40000">6. <i aria-hidden="true"></i><span class="marginprize">₹ 40,000</span></li>
+        <li id="prize-5" class="step" data-value="20000">5. <i class="fa fa-check-circle"></i><span class="marginprize">₹ 20,000</span></li>
+        <li id="prize-4" class="step" data-value="10000">4. <i aria-hidden="true"></i><span class="marginprize">₹ 10,000</span></li>
+        <li id="prize-3" class="step" data-value="5000">3. <i aria-hidden="true"></i><span class="marginprize">₹ 5,000</span></li>
+        <li id="prize-2" class="step" data-value="2000">2. <i aria-hidden="true"></i><span class="marginprize">₹ 2,000</span></li>
+        <li id="prize-1" class="step current " data-value="1000">1. <i class="fas fa-hand-point-right" aria-hidden="true"></i> <span class="marginprize">₹ 1,000</span></li>
+      </ul>
+      <i id="pointer" class="fa fa-hand-point-right"></i>
+    </div>
+
+    <!-- Question and Answer Container -->
+    <div class="qa-container">
+        <!-- Timer -->
+      <div class="timer" id="timer">60</div> <!-- Moved Timer here -->
+      <!-- Question Box -->
+      <div class="question-box">
+        <span id="question">Which first electrical item did Thomas Edison invent?</span>
+      </div>
+
+      <!-- Answer Choices -->
+      <div class="answers">
+        <div class="answer-row">
+          <div class="answer-box" id="answer-1">A. Light Bulb</div>
+          <div class="answer-box" id="answer-2">B. Phonograph</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-box" id="answer-3">C. Battery</div>
+          <div class="answer-box" id="answer-4">D. Generator</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
