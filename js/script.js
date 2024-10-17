@@ -244,6 +244,10 @@ const questions = [
     if(index > 4) {
         document.getElementById('timer').remove();
     } else {
+        const bgMusic = document.getElementById("bgMusic");
+        console.log("PLAYING MUSIC");
+        bgMusic.play();
+        console.log("Starting Timer");
         startTimer();
     }
   }
@@ -359,6 +363,11 @@ function selectAnswer(selectedIndex) {
     // Check if the selected answer is correct
     if (selectedIndex === correctAnswerIndex) {
         // Turn the correct answer box green
+        const bgMusic = document.getElementById("bgMusic");
+        bgMusic.pause();
+        
+        const answerSound = document.getElementById("answerSound");
+        answerSound.play();
         answerBoxes[selectedIndex].style.backgroundColor = 'green';
         answerBoxes[selectedIndex].style.color = 'white'; // Change text color to white
 
